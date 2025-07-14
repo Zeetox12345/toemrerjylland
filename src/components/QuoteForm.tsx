@@ -9,6 +9,21 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+// Mapping fra interne enum-værdier til læsevenlige labels til mailen
+const PROJECT_SIZE_LABELS: Record<string, string> = {
+  small: 'Lille projekt (under 50.000 kr)',
+  medium: 'Mellem projekt (50.000-150.000 kr)',
+  large: 'Stort projekt (over 150.000 kr)'
+};
+
+const WORK_TYPE_LABELS: Record<string, string> = {
+  facade: 'Facaderenovering',
+  bathroom: 'Badeværelse & Fliser',
+  extension: 'Tilbygninger',
+  repair: 'Reparationer'
+};
 
 interface QuoteFormProps {
   className?: string;
@@ -28,8 +43,14 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
     message: ''
   });
 
-  // Separate state for file attachments (optional)
-  const [attachments, setAttachments] = useState<FileList | null>(null);
+  // (Fjernede attachments – EmailJS free tier understøtter ikke filupload)
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // EmailJS configuration (set these in your .env file)
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
 
   /* -------------------------------------------------
      Sticky / floating submit button logic
@@ -68,9 +89,9 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
     }
   }, [formData.projectSize, formData.workType, hasAutoScrolled]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.phone || !formData.email || !formData.postalCode || !formData.city) {
       toast({
@@ -81,31 +102,49 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
       return;
     }
 
-    // TODO: Send to leads@murersilkeborg.dk
-    // TODO: Trigger optional webhook (Zapier) 
-    console.log('Form submitted:', {
-      ...formData,
-      attachments,
-    });
-    
-    toast({
-      title: "Tak for din henvendelse!",
-      description: "Vi ringer dig op inden for 24 timer.",
-      className: "bg-green-50 border-green-200"
-    });
+    // Ensure EmailJS is configured
+    if (!serviceId || !templateId || !publicKey) {
+      toast({
+        title: "Konfigurationsfejl",
+        description: "Email-tjenesten er ikke sat korrekt op. Kontakt udvikleren.",
+        variant: "destructive"
+      });
+      return;
+    }
 
-    // Reset form
-    setFormData({
-      projectSize: '',
-      workType: '',
-      name: '',
-      phone: '',
-      email: '',
-      postalCode: '',
-      city: '',
-      message: ''
-    });
-    setAttachments(null);
+    try {
+      setIsSubmitting(true);
+      // emailjs.sendForm håndterer automatisk fil-vedhæftninger
+      await emailjs.sendForm(serviceId, templateId, formRef.current as HTMLFormElement, publicKey);
+
+      toast({
+        title: "Tak for din henvendelse!",
+        description: "Vi ringer dig op inden for 24 timer.",
+        className: "bg-green-50 border-green-200"
+      });
+
+      // Reset form
+      setFormData({
+        projectSize: '',
+        workType: '',
+        name: '',
+        phone: '',
+        email: '',
+        postalCode: '',
+        city: '',
+        message: ''
+      });
+      formRef.current?.reset();
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Noget gik galt",
+        description: "Kunne ikke sende formularen. Prøv venligst igen senere.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -133,12 +172,15 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
                 <SelectItem value="large">Stort projekt (over 150.000 kr)</SelectItem>
               </SelectContent>
             </Select>
+            {/* Hidden felt med pæn label til EmailJS */}
+            <input type="hidden" name="project_size" value={PROJECT_SIZE_LABELS[formData.projectSize] || ''} />
           </div>
 
           {/* Work Type */}
           <div>
             <Label>Type af arbejde</Label>
             <RadioGroup 
+              name="work_type_raw"
               value={formData.workType} 
               onValueChange={(value) => handleInputChange('workType', value)}
               className="mt-2"
@@ -160,6 +202,8 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
                 <Label htmlFor="repair" className="text-sm">Reparationer</Label>
               </div>
             </RadioGroup>
+            {/* Hidden felt med pæn label til EmailJS */}
+            <input type="hidden" name="work_type" value={WORK_TYPE_LABELS[formData.workType] || ''} />
           </div>
 
           {/* Name */}
@@ -167,6 +211,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             <Label htmlFor="name">Navn *</Label>
             <Input
               id="name"
+              name="name"
               type="text"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
@@ -179,6 +224,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             <Label htmlFor="phone">Telefon *</Label>
             <Input
               id="phone"
+              name="phone"
               type="tel"
               value={formData.phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
@@ -191,6 +237,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             <Label htmlFor="email">E-mail *</Label>
             <Input
               id="email"
+              name="email"
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
@@ -204,6 +251,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
               <Label htmlFor="postalCode">Postnr. *</Label>
               <Input
                 id="postalCode"
+                name="postal_code"
                 type="text"
                 value={formData.postalCode}
                 onChange={(e) => handleInputChange('postalCode', e.target.value)}
@@ -214,6 +262,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
               <Label htmlFor="city">By *</Label>
               <Input
                 id="city"
+                name="city"
                 type="text"
                 value={formData.city}
                 onChange={(e) => handleInputChange('city', e.target.value)}
@@ -222,24 +271,14 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             </div>
           </div>
 
-          {/* Attachments */}
-          <div>
-            <Label htmlFor="attachments">Vedhæft filer/billeder</Label>
-            <Input
-              id="attachments"
-              type="file"
-              multiple
-              accept="image/*,application/pdf"
-              onChange={(e) => setAttachments(e.target.files)}
-            />
-            <p className="text-xs text-gray-500 mt-1">Acceptér billeder (jpg, png) eller PDF-dokumenter. Maks. 10&nbsp;MB pr. fil.</p>
-          </div>
+          {/* Attachments fjernet */}
 
           {/* Message */}
           <div>
             <Label htmlFor="message">Besked</Label>
             <Textarea
               id="message"
+              name="message"
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
               placeholder="Beskriv dit projekt..."
@@ -247,13 +286,23 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             />
           </div>
 
+          {/* Hidden titel til brug i skabelonen (vi genbruger work type label) */}
+          <input type="hidden" name="title" value={WORK_TYPE_LABELS[formData.workType] || ''} />
+
           <Button 
             type="submit" 
             className="w-full bg-terracotta hover:bg-terracotta/90 text-white font-medium"
             ref={submitBtnRef}
+            disabled={isSubmitting}
           >
-            <Send className="w-4 h-4 mr-2" />
-            Få et uforpligtende tilbud »
+            {isSubmitting ? (
+              "Sender..."
+            ) : (
+              <>
+                <Send className="w-4 h-4 mr-2" />
+                Få et uforpligtende tilbud »
+              </>
+            )}
           </Button>
         </form>
       </CardContent>
