@@ -1,0 +1,209 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 97%; /* #f8f8f8 off-white */
+    --foreground: 0 0% 17%; /* #2b2b2b deep charcoal */
+
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 0 0% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+
+    --primary: 9 58% 51%; /* #c44d3f terracotta accent */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 17%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 9 58% 51%; /* terracotta accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 9 58% 51%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 0 0% 17%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 9 58% 51%;
+
+    /* Custom color variables */
+    --charcoal: 0 0% 17%; /* #2b2b2b */
+    --terracotta: 9 58% 51%; /* #c44d3f */
+    --off-white: 0 0% 97%; /* #f8f8f8 */
+  }
+
+  .dark {
+    --background: 0 0% 17%;
+    --foreground: 0 0% 97%;
+    --card: 0 0% 17%;
+    --card-foreground: 0 0% 97%;
+    --popover: 0 0% 17%;
+    --popover-foreground: 0 0% 97%;
+    --primary: 9 58% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 97%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 9 58% 51%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 9 58% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  /* Custom utility classes */
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-charcoal {
+    color: hsl(var(--charcoal));
+  }
+
+  .text-terracotta {
+    color: hsl(var(--terracotta));
+  }
+
+  .bg-charcoal {
+    background-color: hsl(var(--charcoal));
+  }
+
+  .bg-terracotta {
+    background-color: hsl(var(--terracotta));
+  }
+
+  .bg-off-white {
+    background-color: hsl(var(--off-white));
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--terracotta));
+    outline-offset: 2px;
+  }
+
+  /* Custom animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  /* Sticky form styles */
+  .sticky-form {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  /* Mobile fixed call button */
+  @media (max-width: 640px) {
+    .fixed-call-button {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  /* Prose styles for blog content */
+  .prose h2 {
+    @apply font-montserrat font-semibold text-xl mt-8 mb-4 text-charcoal;
+  }
+
+  .prose h3 {
+    @apply font-montserrat font-semibold text-lg mt-6 mb-3 text-charcoal;
+  }
+
+  .prose p {
+    @apply text-gray-700 mb-4 leading-relaxed;
+  }
+
+  .prose ul {
+    @apply list-disc pl-6 mb-4 space-y-2;
+  }
+
+  .prose li {
+    @apply text-gray-700;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
