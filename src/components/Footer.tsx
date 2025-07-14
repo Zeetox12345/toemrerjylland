@@ -55,6 +55,7 @@ const Footer = () => {
               <li><Link to="/services/badevaerelsesrenovering" className="text-gray-300 hover:text-terracotta transition-colors">Badeværelsesrenovering</Link></li>
               <li><Link to="/services/flisearbejde" className="text-gray-300 hover:text-terracotta transition-colors">Flisearbejde</Link></li>
               <li><Link to="/kontakt" className="text-gray-300 hover:text-terracotta transition-colors">Kontakt</Link></li>
+              <li><Link to="/politik" className="text-gray-300 hover:text-terracotta transition-colors">Privatliv &amp; Cookies</Link></li>
             </ul>
           </div>
 
