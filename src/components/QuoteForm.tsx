@@ -59,7 +59,6 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
   const formRef = useRef<HTMLFormElement>(null);
   const formId = useId();
   const submitBtnRef = useRef<HTMLButtonElement>(null);
-  const [hasAutoScrolled, setHasAutoScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,17 +76,6 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  /* -------------------------------------------------
-     Auto-scroll form to submit button when essential
-     fields are filled the first time
-  ------------------------------------------------- */
-  useEffect(() => {
-    if (!hasAutoScrolled && formData.projectSize && formData.workType && submitBtnRef.current) {
-      submitBtnRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setHasAutoScrolled(true);
-    }
-  }, [formData.projectSize, formData.workType, hasAutoScrolled]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
