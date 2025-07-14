@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, User, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const Blog = () => {
   const posts = [
@@ -114,7 +115,7 @@ const Blog = () => {
             Få professionel rådgivning og et gratis tilbud på dit næste projekt.
           </p>
           <Button asChild size="lg" className="bg-terracotta hover:bg-terracotta/90">
-            <a href="tel:+4570806040">Ring 70 80 60 40</a>
+            <a href={`tel:${PHONE_LINK}`}>Ring {PHONE_DISPLAY}</a>
           </Button>
         </div>
       </section>

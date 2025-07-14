@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const Footer = () => {
   return (
@@ -25,8 +26,8 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-terracotta" />
-                <a href="tel:+4570806040" className="hover:text-terracotta transition-colors">
-                  70 80 60 40
+                <a href={`tel:${PHONE_LINK}`} className="hover:text-terracotta transition-colors">
+                  {PHONE_DISPLAY}
                 </a>
               </div>
               <div className="flex items-center space-x-2">
@@ -49,7 +50,8 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-300 hover:text-terracotta transition-colors">Forside</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-terracotta transition-colors">Services</Link></li>
               <li><Link to="/services/facaderenovering" className="text-gray-300 hover:text-terracotta transition-colors">Facaderenovering</Link></li>
-              <li><Link to="/services/badevarelse" className="text-gray-300 hover:text-terracotta transition-colors">Badeværelser</Link></li>
+              <li><Link to="/services/badevaerelsesrenovering" className="text-gray-300 hover:text-terracotta transition-colors">Badeværelsesrenovering</Link></li>
+              <li><Link to="/services/flisearbejde" className="text-gray-300 hover:text-terracotta transition-colors">Flisearbejde</Link></li>
               <li><Link to="/blog" className="text-gray-300 hover:text-terracotta transition-colors">Blog</Link></li>
             </ul>
           </div>

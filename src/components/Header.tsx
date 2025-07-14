@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,9 +44,9 @@ const Header = () => {
               asChild 
               className="bg-terracotta hover:bg-terracotta/90 text-white"
             >
-              <a href="tel:+4570806040" className="inline-flex items-center space-x-2">
+              <a href={`tel:${PHONE_LINK}`} className="inline-flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>70 80 60 40</span>
+                <span>{PHONE_DISPLAY}</span>
               </a>
             </Button>
           </div>
@@ -81,9 +82,9 @@ const Header = () => {
                 asChild 
                 className="bg-terracotta hover:bg-terracotta/90 text-white w-fit"
               >
-                <a href="tel:+4570806040" className="inline-flex items-center space-x-2">
+                <a href={`tel:${PHONE_LINK}`} className="inline-flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>70 80 60 40</span>
+                  <span>{PHONE_DISPLAY}</span>
                 </a>
               </Button>
             </div>

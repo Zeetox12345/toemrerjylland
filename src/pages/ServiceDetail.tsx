@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Phone, CheckCircle, Clock, Euro } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import QuoteForm from '@/components/QuoteForm';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -28,8 +29,8 @@ const ServiceDetail = () => {
       ],
       timeline: '2-6 uger afhængig af projekt størrelse'
     },
-    'badevarelse': {
-      title: 'Badeværelse & Fliser',
+    'badevaerelsesrenovering': {
+      title: 'Badeværelsesrenovering',
       description: 'Komplette badeværelsesrenovering og professionelt flisearbejde',
       heroImage: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       benefits: [
@@ -44,7 +45,25 @@ const ServiceDetail = () => {
         'VVS-arbejde inkluderet',
         'Kompleksitet af layout'
       ],
-      timeline: '1-3 uger for standard badeværelse'
+      timeline: '3-5 uger afhængig af størrelse'
+    },
+    'flisearbejde': {
+      title: 'Flisearbejde',
+      description: 'Eksperter i fliser og klinker – millimeterpræcision og holdbare fuger',
+      heroImage: 'https://images.unsplash.com/photo-1556911220-bff31c12ad06?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      benefits: [
+        'Perfekt fugeafslutning',
+        'Skræddersyede mønstre',
+        'Holdbare materialer',
+        'Vandtæt membran'
+      ],
+      priceFactors: [
+        'Flisernes type og størrelse',
+        'Underlagets beskaffenhed',
+        'Rumstørrelse',
+        'Detaljegrad'
+      ],
+      timeline: '1-2 uger for standard badeværelse'
     },
     'tilbygninger': {
       title: 'Tilbygninger',
@@ -67,6 +86,17 @@ const ServiceDetail = () => {
   };
 
   const service = services[slug as keyof typeof services];
+
+  // Update meta tags
+  useEffect(() => {
+    if (service) {
+      document.title = `${service.title} Silkeborg | Murer Silkeborg`;
+      const metaDesc = document.querySelector("meta[name='description']");
+      if (metaDesc) {
+        metaDesc.setAttribute('content', service.description);
+      }
+    }
+  }, [service]);
 
   if (!service) {
     return <div>Service ikke fundet</div>;
@@ -124,9 +154,9 @@ const ServiceDetail = () => {
               size="lg"
               className="bg-white text-terracotta hover:bg-gray-100 mt-4 md:mt-0"
             >
-              <a href="tel:+4570806040" className="inline-flex items-center">
+              <a href={`tel:${PHONE_LINK}`} className="inline-flex items-center">
                 <Phone className="w-5 h-5 mr-2" />
-                Ring på 70 80 60 40
+                Ring på {PHONE_DISPLAY}
               </a>
             </Button>
           </div>
@@ -203,7 +233,7 @@ const ServiceDetail = () => {
                   </p>
                   <div className="space-y-3">
                     <Button asChild className="w-full bg-terracotta hover:bg-terracotta/90">
-                      <a href="tel:+4570806040">Ring 70 80 60 40</a>
+                      <a href={`tel:${PHONE_LINK}`}>Ring {PHONE_DISPLAY}</a>
                     </Button>
                     <Button asChild variant="outline" className="w-full">
                       <a href="mailto:info@murersilkeborg.dk">Send email</a>

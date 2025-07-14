@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Hammer, Home, Wrench } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const Services = () => {
   const services = [
@@ -15,11 +16,18 @@ const Services = () => {
       features: ['Murstensskifte', 'Fugeskrabning', 'Fugtproblemer', 'Isolering']
     },
     {
-      title: 'Badeværelse & Fliser',
+      title: 'Badeværelsesrenovering',
       description: 'Komplette badeværelsesrenovering og flisearbejde i høj kvalitet.',
       icon: Wrench,
-      slug: 'badevarelse',
+      slug: 'badevaerelsesrenovering',
       features: ['Flisearbejde', 'Membran', 'VVS-samarbejde', 'Design-rådgivning']
+    },
+    {
+      title: 'Flisearbejde',
+      description: 'Eksperter i fliser og klinker til køkken, bad og terrasse.',
+      icon: Wrench,
+      slug: 'flisearbejde',
+      features: ['Klinker', 'Natursten', 'Køkkenfliser', 'Udendørsbelægning']
     },
     {
       title: 'Tilbygninger',
@@ -90,10 +98,10 @@ const Services = () => {
             Ikke sikker på hvilken service du har brug for?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Ring til os på 70 80 60 40, så hjælper vi dig med at finde den rigtige løsning til dit projekt.
+            Ring til os på {PHONE_DISPLAY}, så hjælper vi dig med at finde den rigtige løsning til dit projekt.
           </p>
           <Button asChild size="lg" className="bg-terracotta hover:bg-terracotta/90">
-            <a href="tel:+4570806040">Ring nu for rådgivning</a>
+            <a href={`tel:${PHONE_LINK}`}>Ring nu for rådgivning</a>
           </Button>
         </div>
       </section>

@@ -5,6 +5,7 @@ import { Calendar, User, ChevronRight, Share2, Facebook, Twitter } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import QuoteForm from '@/components/QuoteForm';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -184,7 +185,7 @@ const BlogPost = () => {
                   </p>
                   <div className="space-y-3">
                     <Button asChild className="w-full bg-terracotta hover:bg-terracotta/90">
-                      <a href="tel:+4570806040">Ring 70 80 60 40</a>
+                      <a href={`tel:${PHONE_LINK}`}>Ring {PHONE_DISPLAY}</a>
                     </Button>
                     <Button asChild variant="outline" className="w-full">
                       <a href="#quote">Få gratis tilbud</a>

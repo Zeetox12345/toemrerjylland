@@ -1,13 +1,21 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, CheckCircle, Clock, Users, Award, Star, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import QuoteForm from '@/components/QuoteForm';
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "Murer Silkeborg | Lokalt murermesterteam – Facader, Badeværelser & Flisearbejde";
+    const metaDesc = document.querySelector("meta[name='description']");
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Skal du bruge en erfaren murer i Silkeborg? Vi leverer alt fra facaderenovering til flisearbejde. Få et GRATIS og uforpligtende tilbud – ring +27 85 13 81 i dag!');
+    }
+  }, []);
   return (
     <>
       {/* Hero Section */}
@@ -24,10 +32,10 @@ const Index = () => {
             <div className="lg:col-span-2">
               <div className="animate-fade-in-up">
                 <h1 className="font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
-                  Murer Silkeborg – Dit Lokale Murermesterteam
+                  Murer Silkeborg – Dit lokale, professionelle murermesterteam
                 </h1>
-                <h2 className="text-xl md:text-2xl mb-8 text-gray-200 font-medium">
-                  Speciale i facaderenovering, badeværelser & flisearbejde
+                <h2 className="text-xl md:text-2xl mb-8 text-gray-200 font-medium max-w-3xl">
+                  Drømmer du om et nyt badeværelse, en solid tilbygning eller en facaderenovering, der holder i årtier? Hos Murer Silkeborg får du specialiseret murerarbejde udført efter de højeste faglige standarder. Vi kombinerer traditionelle teknikker med moderne løsninger – og vi står klar til at forvandle dine byggedrømme til virkelighed.
                 </h2>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Button 
@@ -35,9 +43,9 @@ const Index = () => {
                     size="lg" 
                     className="bg-yellow-500 hover:bg-yellow-400 text-charcoal font-semibold text-lg px-8 py-4"
                   >
-                    <a href="tel:+4570806040" className="inline-flex items-center">
+                    <a href={`tel:${PHONE_LINK}`} className="inline-flex items-center">
                       <Phone className="w-5 h-5 mr-2" />
-                      Ring 70 80 60 40
+                      Ring {PHONE_DISPLAY}
                     </a>
                   </Button>
                   <Button 
@@ -76,6 +84,51 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Intro Copy Section */}
+      <section className="py-12 bg-off-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-6 text-gray-700">
+          <h2 className="font-montserrat font-bold text-2xl text-charcoal">Hvorfor vælge en lokal murer i Silkeborg?</h2>
+          <p>
+            Silkeborgs særlige klimaforhold stiller krav til alt fra fugtsikring til materialevalg. Som lokal murermester kender vi de gældende byggestandarder, myndighedskrav og de typiske murstenstyper i området. Det betyder mere holdbare løsninger, færre overraskelser og kort responstid, når du kontakter os på {PHONE_DISPLAY}.
+          </p>
+
+          <h2 className="font-montserrat font-bold text-2xl text-charcoal">Vores kerneydelser</h2>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-left border border-gray-200 text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-4 py-2 font-semibold">Ydelse</th>
+                  <th className="px-4 py-2">Typiske opgaver</th>
+                  <th className="px-4 py-2">Fordele</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t">
+                  <td className="px-4 py-2 font-medium">Facaderenovering</td>
+                  <td className="px-4 py-2">Vandskuring, omfugning, netpuds</td>
+                  <td className="px-4 py-2">Forlænger levetiden, reducerer varmetab</td>
+                </tr>
+                <tr className="border-t">
+                  <td className="px-4 py-2 font-medium">Badeværelses­renovering</td>
+                  <td className="px-4 py-2">Nyt vådrum, fliseopsætning, gulvvarme</td>
+                  <td className="px-4 py-2">Øger boligværdien, bedre fugtsikring</td>
+                </tr>
+                <tr className="border-t">
+                  <td className="px-4 py-2 font-medium">Tilbygninger & Nybyg</td>
+                  <td className="px-4 py-2">Garage, udestue, ekstra etage</td>
+                  <td className="px-4 py-2">Skræddersyede løsninger, byggestyring</td>
+                </tr>
+                <tr className="border-t">
+                  <td className="px-4 py-2 font-medium">Flisearbejde Silkeborg</td>
+                  <td className="px-4 py-2">Køkken­fliser, klinker, natursten</td>
+                  <td className="px-4 py-2">Millimeterpræcision, slidstærke fuger</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Services Overview */}
       <section id="services" className="py-16 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,16 +150,16 @@ const Index = () => {
                 link: '/services/facaderenovering'
               },
               {
-                title: 'Badeværelse & Fliser',
+                title: 'Badeværelsesrenovering',
                 description: 'Komplette badeværelsesrenovering og professionelt flisearbejde.',
                 image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                link: '/services/badevarelse'
+                link: '/services/badevaerelsesrenovering'
               },
               {
-                title: 'Tilbygninger',
-                description: 'Murværk til tilbygninger, carporte og andre byggeprojekter.',
-                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                link: '/services/tilbygninger'
+                title: 'Flisearbejde',
+                description: 'Eksperter i fliser & klinker – skarpe linjer og holdbare fuger.',
+                image: 'https://images.unsplash.com/photo-1556911220-bff31c12ad06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                link: '/services/flisearbejde'
               }
             ].map((service, index) => (
               <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300 group">
@@ -302,7 +355,7 @@ const Index = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "Murer Silkeborg",
-              "telephone": "+4570806040",
+              "telephone": PHONE_LINK,
               "email": "info@murersilkeborg.dk",
               "address": {
                 "@type": "PostalAddress",

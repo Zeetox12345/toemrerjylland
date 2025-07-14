@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { PHONE_DISPLAY } from "@/lib/constants";
 
 const Politik = () => {
   return (
@@ -53,7 +54,7 @@ const Politik = () => {
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p><strong>Murer Silkeborg</strong></p>
                 <p>E-mail: info@murersilkeborg.dk</p>
-                <p>Telefon: 70 80 60 40</p>
+                <p>Telefon: {PHONE_DISPLAY}</p>
               </div>
             </section>
 
