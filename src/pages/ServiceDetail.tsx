@@ -6,15 +6,32 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import QuoteForm from '@/components/QuoteForm';
 import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
+import FacadeRenovationContent from "@/components/FacadeRenovationContent";
+import BathroomRenovationContent from "@/components/BathroomRenovationContent";
+import TileWorkContent from "@/components/TileWorkContent";
+import ExtensionContent from "@/components/ExtensionContent";
+
+interface ServiceData {
+  title: string;
+  description: string;
+  heroImage: string;
+  benefits: string[];
+  priceFactors: string[];
+  timeline: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
 
 const ServiceDetail = () => {
   const { slug } = useParams();
 
-  const services = {
+  const services: Record<string, ServiceData> = {
     'facaderenovering': {
       title: 'Facaderenovering',
       description: 'Professionel renovering af facader med fokus på kvalitet og holdbarhed',
-      heroImage: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      heroImage: '/facaderenovering.jpg',
       benefits: [
         'Øget værdi på din ejendom',
         'Bedre isolering og energibesparelse',
@@ -27,12 +44,16 @@ const ServiceDetail = () => {
         'Kompleksitet af arbejdet',
         'Stilladsbehov'
       ],
-      timeline: '2-6 uger afhængig af projekt størrelse'
+      timeline: '2-6 uger afhængig af projekt størrelse',
+      seoTitle: 'Facaderenovering Silkeborg | Vandskuring, Omfugning & Netpuds – Få tilbud',
+      seoDescription: 'Professionel facaderenovering i Silkeborg: vandskuring, omfugning og netpuds. Forlæng levetiden på din facade og spar energi. Gratis besigtigelse – ring +27 85 13 81.',
+      ogTitle: 'Facaderenovering Silkeborg | Eksperter i holdbar facade',
+      ogDescription: 'Få en flot, stærk facade. Vi tilbyder omfugning, vandskuring og netpuds i Silkeborg. Ring +27 85 13 81 for gratis rådgivning.'
     },
     'badevaerelsesrenovering': {
       title: 'Badeværelsesrenovering',
       description: 'Komplette badeværelsesrenovering og professionelt flisearbejde',
-      heroImage: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      heroImage: '/badevaerelserenovering.jpg',
       benefits: [
         'Vandtæt og holdbar løsning',
         'Moderne design og funktionalitet',
@@ -45,12 +66,16 @@ const ServiceDetail = () => {
         'VVS-arbejde inkluderet',
         'Kompleksitet af layout'
       ],
-      timeline: '3-5 uger afhængig af størrelse'
+      timeline: '3-5 uger afhængig af størrelse',
+      seoTitle: 'Badeværelsesrenovering Silkeborg | Total vådrumsløsning – Ring +27 85 13 81',
+      seoDescription: 'Drømmer du om et nyt badeværelse? Vi tilbyder komplet badeværelsesrenovering i Silkeborg: design, VVS, el, fliser og gulvvarme. Få gratis 3D-tegning og fast pris – kontakt +27 85 13 81.',
+      ogTitle: 'Badeværelsesrenovering Silkeborg – Eksperter i moderne vådrum',
+      ogDescription: 'Professionel badeværelsesrenovering i Silkeborg med garanti. Alt fra nedrivning til sidste fuge. Ring +27 85 13 81 for gratis rådgivning.'
     },
     'flisearbejde': {
       title: 'Flisearbejde',
       description: 'Eksperter i fliser og klinker – millimeterpræcision og holdbare fuger',
-      heroImage: 'https://images.unsplash.com/photo-1556911220-bff31c12ad06?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      heroImage: '/flisearbejde.jpg',
       benefits: [
         'Perfekt fugeafslutning',
         'Skræddersyede mønstre',
@@ -63,12 +88,16 @@ const ServiceDetail = () => {
         'Rumstørrelse',
         'Detaljegrad'
       ],
-      timeline: '1-2 uger for standard badeværelse'
+      timeline: '1-2 uger for standard badeværelse',
+      seoTitle: 'Flisearbejde Silkeborg | Eksperter i fliser, klinker & natursten – Fast pris',
+      seoDescription: 'Perfekt flisearbejde i Silkeborg til badeværelse, køkken eller terrasse. Millimeterpræcision, slidstærke fuger og garanti. Få gratis rådgivning – ring +27 85 13 81.',
+      ogTitle: 'Flisearbejde Silkeborg – Professionel fliselægning med garanti',
+      ogDescription: 'Vi leverer flisearbejde i Silkeborg med fokus på kvalitet og holdbarhed. Indendørs og udendørs fliser, natursten og mosaik. Kontakt +27 85 13 81 for et gratis tilbud.'
     },
     'tilbygninger': {
       title: 'Tilbygninger',
       description: 'Murværk til tilbygninger, carporte og andre byggeprojekter',
-      heroImage: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      heroImage: '/tilbygninger.jpg',
       benefits: [
         'Ekstra plads til familien',
         'Professionelt fundament',
@@ -81,7 +110,11 @@ const ServiceDetail = () => {
         'Materialevalg',
         'Terrænforhold'
       ],
-      timeline: '3-8 uger afhængig af størrelse'
+      timeline: '3-8 uger afhængig af størrelse',
+      seoTitle: 'Tilbygninger Silkeborg | Garage, Overetage & Orangeri – Få fast pris',
+      seoDescription: 'Skal du bygge til? Vi designer og opfører tilbygninger i Silkeborg: udestuer, garager, ekstra etage og orangerier. Gratis skitseforslag og byggetilladelse inkluderet – ring +27 85 13 81.',
+      ogTitle: 'Tilbygninger Silkeborg – Lokale eksperter i udvidelse af boligen',
+      ogDescription: 'Professionelle tilbygninger i Silkeborg: fra idé og byggetilladelse til nøglefærdig udvidelse. Kontakt +27 85 13 81 for uforpligtende rådgivning.'
     }
   };
 
@@ -90,10 +123,23 @@ const ServiceDetail = () => {
   // Update meta tags
   useEffect(() => {
     if (service) {
-      document.title = `${service.title} Silkeborg | Murer Silkeborg`;
+      // Dynamic <title>
+      document.title = service.seoTitle ?? `${service.title} Silkeborg | Murer Silkeborg`;
+
+      // Meta Description
       const metaDesc = document.querySelector("meta[name='description']");
       if (metaDesc) {
-        metaDesc.setAttribute('content', service.description);
+        metaDesc.setAttribute('content', service.seoDescription ?? service.description);
+      }
+
+      // Open Graph tags
+      const ogTitle = document.querySelector("meta[property='og:title']");
+      if (ogTitle) {
+        ogTitle.setAttribute('content', service.ogTitle ?? document.title);
+      }
+      const ogDesc = document.querySelector("meta[property='og:description']");
+      if (ogDesc) {
+        ogDesc.setAttribute('content', service.ogDescription ?? service.seoDescription ?? service.description);
       }
     }
   }, [service]);
@@ -213,6 +259,31 @@ const ServiceDetail = () => {
               <div className="lg:hidden">
                 <QuoteForm title={`Få tilbud på ${service.title.toLowerCase()}`} />
               </div>
+
+              {/* SEO Rich Content */}
+              {slug === 'facaderenovering' && (
+                <div className="space-y-12">
+                  <FacadeRenovationContent />
+                </div>
+              )}
+
+              {slug === 'badevaerelsesrenovering' && (
+                <div className="space-y-12">
+                  <BathroomRenovationContent />
+                </div>
+              )}
+
+              {slug === 'flisearbejde' && (
+                <div className="space-y-12">
+                  <TileWorkContent />
+                </div>
+              )}
+
+              {slug === 'tilbygninger' && (
+                <div className="space-y-12">
+                  <ExtensionContent />
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}

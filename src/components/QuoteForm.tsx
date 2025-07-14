@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useId } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -23,14 +23,56 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
     name: '',
     phone: '',
     email: '',
+    postalCode: '',
+    city: '',
     message: ''
   });
+
+  // Separate state for file attachments (optional)
+  const [attachments, setAttachments] = useState<FileList | null>(null);
+
+  /* -------------------------------------------------
+     Sticky / floating submit button logic
+  ------------------------------------------------- */
+  const [showSticky, setShowSticky] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const formId = useId();
+  const submitBtnRef = useRef<HTMLButtonElement>(null);
+  const [hasAutoScrolled, setHasAutoScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!formRef.current) return;
+      const rect = formRef.current.getBoundingClientRect();
+
+      // Trigger after user har scrolled mere end 30% af viewport-højden
+      const scrolledEnough = window.scrollY > window.innerHeight * 0.3;
+      // Hvis selve submit-knappen (nederste del af formularen) er synlig, skjul sticky
+      const bottomVisible = rect.bottom <= window.innerHeight;
+      setShowSticky(scrolledEnough && !bottomVisible);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  /* -------------------------------------------------
+     Auto-scroll form to submit button when essential
+     fields are filled the first time
+  ------------------------------------------------- */
+  useEffect(() => {
+    if (!hasAutoScrolled && formData.projectSize && formData.workType && submitBtnRef.current) {
+      submitBtnRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setHasAutoScrolled(true);
+    }
+  }, [formData.projectSize, formData.workType, hasAutoScrolled]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.phone || !formData.email) {
+    if (!formData.name || !formData.phone || !formData.email || !formData.postalCode || !formData.city) {
       toast({
         title: "Manglende information",
         description: "Udfyld venligst alle påkrævede felter.",
@@ -41,7 +83,10 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
 
     // TODO: Send to leads@murersilkeborg.dk
     // TODO: Trigger optional webhook (Zapier) 
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', {
+      ...formData,
+      attachments,
+    });
     
     toast({
       title: "Tak for din henvendelse!",
@@ -56,8 +101,11 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
       name: '',
       phone: '',
       email: '',
+      postalCode: '',
+      city: '',
       message: ''
     });
+    setAttachments(null);
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -65,12 +113,13 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
   };
 
   return (
+    <>
     <Card className={`shadow-lg ${className}`}>
       <CardHeader className="bg-terracotta text-white">
         <CardTitle className="font-montserrat text-lg">{title}</CardTitle>
       </CardHeader>
       <CardContent className="p-6">
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form ref={formRef} id={formId} onSubmit={handleSubmit} className="space-y-4">
           {/* Project Size */}
           <div>
             <Label htmlFor="project-size">Projektstørrelse</Label>
@@ -149,6 +198,43 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             />
           </div>
 
+          {/* Postal code & City - responsive grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="postalCode">Postnr. *</Label>
+              <Input
+                id="postalCode"
+                type="text"
+                value={formData.postalCode}
+                onChange={(e) => handleInputChange('postalCode', e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor="city">By *</Label>
+              <Input
+                id="city"
+                type="text"
+                value={formData.city}
+                onChange={(e) => handleInputChange('city', e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          {/* Attachments */}
+          <div>
+            <Label htmlFor="attachments">Vedhæft filer/billeder</Label>
+            <Input
+              id="attachments"
+              type="file"
+              multiple
+              accept="image/*,application/pdf"
+              onChange={(e) => setAttachments(e.target.files)}
+            />
+            <p className="text-xs text-gray-500 mt-1">Acceptér billeder (jpg, png) eller PDF-dokumenter. Maks. 10&nbsp;MB pr. fil.</p>
+          </div>
+
           {/* Message */}
           <div>
             <Label htmlFor="message">Besked</Label>
@@ -164,13 +250,26 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
           <Button 
             type="submit" 
             className="w-full bg-terracotta hover:bg-terracotta/90 text-white font-medium"
+            ref={submitBtnRef}
           >
             <Send className="w-4 h-4 mr-2" />
-            Send →
+            Få et uforpligtende tilbud »
           </Button>
         </form>
       </CardContent>
     </Card>
+
+    {/* Sticky floating button (mobile first) */}
+    {showSticky && (
+      <Button
+        type="submit"
+        form={formId}
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 max-w-sm w-[90%] bg-terracotta hover:bg-terracotta/90 text-white font-semibold shadow-xl md:hidden z-50"
+      >
+        Få et uforpligtende tilbud »
+      </Button>
+    )}
+    </>
   );
 };
 

@@ -11,22 +11,20 @@ const Header = () => {
   const navigation = [
     { name: 'Forside', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Kontakt', href: '#kontakt' },
+    { name: 'Kontakt', href: '/kontakt' },
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-40">
+    <header className="bg-white shadow-sm sticky top-0 z-40 h-24">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-terracotta rounded-sm flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M</span>
-            </div>
-            <span className="font-montserrat font-bold text-xl text-charcoal">
-              Murer Silkeborg
-            </span>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/murersilkeborglogo.PNG"
+              alt="Murer Silkeborg Logo"
+              className="h-16 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

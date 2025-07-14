@@ -12,9 +12,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-terracotta rounded-sm flex items-center justify-center">
-                <span className="text-white font-bold text-sm">M</span>
-              </div>
+              <img
+                src="/favicon.png"
+                alt="Murer Silkeborg Logo"
+                className="h-10 w-auto object-contain"
+              />
               <span className="font-montserrat font-bold text-xl">
                 Murer Silkeborg
               </span>
@@ -52,7 +54,7 @@ const Footer = () => {
               <li><Link to="/services/facaderenovering" className="text-gray-300 hover:text-terracotta transition-colors">Facaderenovering</Link></li>
               <li><Link to="/services/badevaerelsesrenovering" className="text-gray-300 hover:text-terracotta transition-colors">Badeværelsesrenovering</Link></li>
               <li><Link to="/services/flisearbejde" className="text-gray-300 hover:text-terracotta transition-colors">Flisearbejde</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-terracotta transition-colors">Blog</Link></li>
+              <li><Link to="/kontakt" className="text-gray-300 hover:text-terracotta transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
@@ -72,16 +74,9 @@ const Footer = () => {
         <div className="border-t border-gray-600 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Murer Silkeborg. Alle rettigheder forbeholdes.
+              © 2025 Murer Silkeborg. Alle rettigheder forbeholdes.
             </p>
-            <div className="flex space-x-6">
-              <Link to="/politik" className="text-gray-400 hover:text-terracotta transition-colors text-sm">
-                Privatlivspolitik
-              </Link>
-              <Link to="/politik" className="text-gray-400 hover:text-terracotta transition-colors text-sm">
-                Cookies
-              </Link>
-            </div>
+            {/* Removed privacy & cookies links as requested */}
           </div>
           <div className="mt-4 pt-4 border-t border-gray-700">
             <p className="text-gray-500 text-xs text-center">

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import QuoteForm from '@/components/QuoteForm';
 import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
+import SEOContent, { faqItems } from "@/components/SEOContent";
 
 const Index = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
+            backgroundImage: "url('/mason-2376322.jpg')"
           }}
           aria-hidden="true"
         />
@@ -50,9 +51,8 @@ const Index = () => {
                   </Button>
                   <Button 
                     asChild 
-                    variant="outline" 
                     size="lg" 
-                    className="border-white text-white hover:bg-white hover:text-charcoal"
+                    className="bg-white text-charcoal hover:bg-gray-100"
                   >
                     <a href="#services">Se Vores Services</a>
                   </Button>
@@ -146,19 +146,19 @@ const Index = () => {
               {
                 title: 'Facaderenovering',
                 description: 'Professionel renovering af facader med fokus på kvalitet og holdbarhed.',
-                image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: '/facaderenovering.jpg',
                 link: '/services/facaderenovering'
               },
               {
                 title: 'Badeværelsesrenovering',
                 description: 'Komplette badeværelsesrenovering og professionelt flisearbejde.',
-                image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: '/badevaerelserenovering.jpg',
                 link: '/services/badevaerelsesrenovering'
               },
               {
                 title: 'Flisearbejde',
                 description: 'Eksperter i fliser & klinker – skarpe linjer og holdbare fuger.',
-                image: 'https://images.unsplash.com/photo-1556911220-bff31c12ad06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: '/flisearbejde.jpg',
                 link: '/services/flisearbejde'
               }
             ].map((service, index) => (
@@ -223,101 +223,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-4 text-charcoal">
-              Hvad Siger Vores Kunder
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Lars Hansen',
-                location: 'Silkeborg',
-                text: 'Fantastisk arbejde med vores nye badeværelse. Professionelt team og høj kvalitet. TODO: Real testimonial',
-                rating: 5
-              },
-              {
-                name: 'Anne Pedersen',
-                location: 'Them',
-                text: 'Hurtig og effektiv facaderenovering. Meget tilfreds med resultatet og prisen. TODO: Real testimonial',
-                rating: 5
-              },
-              {
-                name: 'Michael Sørensen',
-                location: 'Silkeborg',
-                text: 'Pålidelige håndværkere der holder deres aftaler. Kan varmt anbefales! TODO: Real testimonial',
-                rating: 5
-              }
-            ].map((testimonial, index) => (
-              <Card key={index} className="shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-4 text-charcoal">
-                Ofte Stillede Spørgsmål
-              </h2>
-            </div>
-            
-            <Accordion type="single" collapsible className="space-y-4">
-              {[
-                {
-                  question: 'Hvor hurtigt kan I starte på mit projekt?',
-                  answer: 'Det afhænger af projektets størrelse og vores nuværende booking. Typisk kan vi starte inden for 1-2 uger for mindre projekter og 2-4 uger for større renoveringer.'
-                },
-                {
-                  question: 'Giver I garanti på jeres arbejde?',
-                  answer: 'Ja, vi giver 5 års garanti på alt murværk og 2 års garanti på flisearbejde. Derudover er vi medlemmer af BygGaranti.'
-                },
-                {
-                  question: 'Laver I også arbejde i weekenden?',
-                  answer: 'Vi arbejder primært på hverdage, men kan i særlige tilfælde arrangere weekendarbejde. Dette aftales individuelt og kan medføre ekstra omkostninger.'
-                },
-                {
-                  question: 'Hvad koster det at få lavet et tilbud?',
-                  answer: 'Alle vores tilbud er gratis og uforpligtende. Vi kommer gerne ud og ser på opgaven uden det koster dig noget.'
-                },
-                {
-                  question: 'Arbejder I kun i Silkeborg?',
-                  answer: 'Vi dækker primært Silkeborg og omegn, inklusiv Them, Ry, Gjern og andre nærliggende områder. Kontakt os for at høre om vi dækker dit område.'
-                }
-              ].map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg px-4">
-                  <AccordionTrigger className="font-medium text-left hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-600">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
+      {/* SEO Longform Content */}
+      <SEOContent />
 
       {/* Trust Badges */}
       <section className="py-12 bg-off-white border-t">
@@ -347,7 +254,8 @@ const Index = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: JSON.stringify([
+            {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Murer Silkeborg",
@@ -355,7 +263,7 @@ const Index = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "Murer Silkeborg",
-              "telephone": PHONE_LINK,
+                "telephone": PHONE_LINK,
               "email": "info@murersilkeborg.dk",
               "address": {
                 "@type": "PostalAddress",
@@ -366,7 +274,20 @@ const Index = () => {
             },
             "areaServed": "Silkeborg",
             "serviceType": "Murermester"
-          })
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqItems.map(item => ({
+                "@type": "Question",
+                "name": item.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.answer
+                }
+              }))
+            }
+          ])
         }}
       />
     </>
