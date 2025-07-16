@@ -61,7 +61,6 @@ const SEOContent = () => {
               <th className="px-3 py-2 text-left">Kort beskrivelse</th>
               <th className="px-3 py-2">Tidsforbrug</th>
               <th className="px-3 py-2">Ca. pris*</th>
-              <th className="px-3 py-2">Slagelse-tip</th>
             </tr>
           </thead>
           <tbody>
@@ -70,35 +69,30 @@ const SEOContent = () => {
               <td className="px-3 py-2">Vandskuring, omfugning, netpuds</td>
               <td className="px-3 py-2">5-10 dage</td>
               <td className="px-3 py-2">550-800 kr./m²</td>
-              <td className="px-3 py-2">Mange 50-60 mm formsten → kræver skånsom afrensning</td>
             </tr>
             <tr className="border-t">
               <td className="px-3 py-2 font-medium"><Link to="/services/badevaerelsesrenovering" className="text-terracotta hover:underline">Badeværelses­renovering</Link></td>
               <td className="px-3 py-2">Total vådrum inkl. VVS & el</td>
               <td className="px-3 py-2">3-5 uger</td>
               <td className="px-3 py-2">110.000-220.000 kr.</td>
-              <td className="px-3 py-2">Kælderrum har højt grundvand → ekstra fugtsikring</td>
             </tr>
             <tr className="border-t">
               <td className="px-3 py-2 font-medium">Tilbygning / garage</td>
               <td className="px-3 py-2">Sokkel, råhus, inder/ydre vægge</td>
               <td className="px-3 py-2">4-8 uger</td>
               <td className="px-3 py-2">6.500-9.500 kr./m²</td>
-              <td className="px-3 py-2">Skrånende terræn i Sejs → terræntilpasning</td>
             </tr>
             <tr className="border-t">
               <td className="px-3 py-2 font-medium"><Link to="/services/flisearbejde" className="text-terracotta hover:underline">Flisearbejde</Link></td>
               <td className="px-3 py-2">Gulv- &amp; vægfliser, natursten</td>
               <td className="px-3 py-2">1-4 dage</td>
               <td className="px-3 py-2">550-950 kr./m²</td>
-              <td className="px-3 py-2">Stor efterspørgsel på 60×120-fliser</td>
             </tr>
             <tr className="border-t">
               <td className="px-3 py-2 font-medium">Fugtsikring</td>
               <td className="px-3 py-2">Kemisk injektion &amp; omfangsdræn</td>
               <td className="px-3 py-2">3-7 dage</td>
               <td className="px-3 py-2">25.000-70.000 kr.</td>
-              <td className="px-3 py-2">Sø-nært grundvand → høj fugtrisiko</td>
             </tr>
           </tbody>
         </table>
