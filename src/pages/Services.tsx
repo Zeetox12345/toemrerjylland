@@ -49,7 +49,7 @@ const Services = () => {
             </h1>
             <p className="text-xl text-gray-200 mb-8">
               Vi tilbyder professionelle murerløsninger til både private og erhvervskunder 
-              i Silkeborg og omegn. Se vores specialer nedenfor.
+              i Slagelse og omegn. Se vores specialer nedenfor.
             </p>
           </div>
         </div>

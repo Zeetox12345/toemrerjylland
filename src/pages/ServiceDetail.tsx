@@ -45,10 +45,10 @@ const ServiceDetail = () => {
         'Stilladsbehov'
       ],
       timeline: '2-6 uger afhængig af projekt størrelse',
-      seoTitle: 'Facaderenovering Silkeborg | Vandskuring, Omfugning & Netpuds – Få tilbud',
-      seoDescription: 'Professionel facaderenovering i Silkeborg: vandskuring, omfugning og netpuds. Forlæng levetiden på din facade og spar energi. Gratis besigtigelse – ring +27 85 13 81.',
-      ogTitle: 'Facaderenovering Silkeborg | Eksperter i holdbar facade',
-      ogDescription: 'Få en flot, stærk facade. Vi tilbyder omfugning, vandskuring og netpuds i Silkeborg. Ring +27 85 13 81 for gratis rådgivning.'
+          seoTitle: 'Facaderenovering Slagelse | Vandskuring, Omfugning & Netpuds – Få tilbud',
+    seoDescription: 'Professionel facaderenovering i Slagelse: vandskuring, omfugning og netpuds. Forlæng levetiden på din facade og spar energi. Gratis besigtigelse – ring +27 85 13 81.',
+    ogTitle: 'Facaderenovering Slagelse | Eksperter i holdbar facade',
+    ogDescription: 'Få en flot, stærk facade. Vi tilbyder omfugning, vandskuring og netpuds i Slagelse. Ring +27 85 13 81 for gratis rådgivning.'
     },
     'badevaerelsesrenovering': {
       title: 'Badeværelsesrenovering',
@@ -67,10 +67,10 @@ const ServiceDetail = () => {
         'Kompleksitet af layout'
       ],
       timeline: '3-5 uger afhængig af størrelse',
-      seoTitle: 'Badeværelsesrenovering Silkeborg | Total vådrumsløsning – Ring +27 85 13 81',
-      seoDescription: 'Drømmer du om et nyt badeværelse? Vi tilbyder komplet badeværelsesrenovering i Silkeborg: design, VVS, el, fliser og gulvvarme. Få gratis 3D-tegning og fast pris – kontakt +27 85 13 81.',
-      ogTitle: 'Badeværelsesrenovering Silkeborg – Eksperter i moderne vådrum',
-      ogDescription: 'Professionel badeværelsesrenovering i Silkeborg med garanti. Alt fra nedrivning til sidste fuge. Ring +27 85 13 81 for gratis rådgivning.'
+          seoTitle: 'Badeværelsesrenovering Slagelse | Total vådrumsløsning – Ring +27 85 13 81',
+    seoDescription: 'Drømmer du om et nyt badeværelse? Vi tilbyder komplet badeværelsesrenovering i Slagelse: design, VVS, el, fliser og gulvvarme. Få gratis 3D-tegning og fast pris – kontakt +27 85 13 81.',
+    ogTitle: 'Badeværelsesrenovering Slagelse – Eksperter i moderne vådrum',
+    ogDescription: 'Professionel badeværelsesrenovering i Slagelse med garanti. Alt fra nedrivning til sidste fuge. Ring +27 85 13 81 for gratis rådgivning.'
     },
     'flisearbejde': {
       title: 'Flisearbejde',
@@ -89,10 +89,10 @@ const ServiceDetail = () => {
         'Detaljegrad'
       ],
       timeline: '1-2 uger for standard badeværelse',
-      seoTitle: 'Flisearbejde Silkeborg | Eksperter i fliser, klinker & natursten – Fast pris',
-      seoDescription: 'Perfekt flisearbejde i Silkeborg til badeværelse, køkken eller terrasse. Millimeterpræcision, slidstærke fuger og garanti. Få gratis rådgivning – ring +27 85 13 81.',
-      ogTitle: 'Flisearbejde Silkeborg – Professionel fliselægning med garanti',
-      ogDescription: 'Vi leverer flisearbejde i Silkeborg med fokus på kvalitet og holdbarhed. Indendørs og udendørs fliser, natursten og mosaik. Kontakt +27 85 13 81 for et gratis tilbud.'
+          seoTitle: 'Flisearbejde Slagelse | Eksperter i fliser, klinker & natursten – Fast pris',
+    seoDescription: 'Perfekt flisearbejde i Slagelse til badeværelse, køkken eller terrasse. Millimeterpræcision, slidstærke fuger og garanti. Få gratis rådgivning – ring +27 85 13 81.',
+    ogTitle: 'Flisearbejde Slagelse – Professionel fliselægning med garanti',
+    ogDescription: 'Vi leverer flisearbejde i Slagelse med fokus på kvalitet og holdbarhed. Indendørs og udendørs fliser, natursten og mosaik. Kontakt +27 85 13 81 for et gratis tilbud.'
     },
     'tilbygninger': {
       title: 'Tilbygninger',
@@ -111,10 +111,10 @@ const ServiceDetail = () => {
         'Terrænforhold'
       ],
       timeline: '3-8 uger afhængig af størrelse',
-      seoTitle: 'Tilbygninger Silkeborg | Garage, Overetage & Orangeri – Få fast pris',
-      seoDescription: 'Skal du bygge til? Vi designer og opfører tilbygninger i Silkeborg: udestuer, garager, ekstra etage og orangerier. Gratis skitseforslag og byggetilladelse inkluderet – ring +27 85 13 81.',
-      ogTitle: 'Tilbygninger Silkeborg – Lokale eksperter i udvidelse af boligen',
-      ogDescription: 'Professionelle tilbygninger i Silkeborg: fra idé og byggetilladelse til nøglefærdig udvidelse. Kontakt +27 85 13 81 for uforpligtende rådgivning.'
+          seoTitle: 'Tilbygninger Slagelse | Garage, Overetage & Orangeri – Få fast pris',
+    seoDescription: 'Skal du bygge til? Vi designer og opfører tilbygninger i Slagelse: udestuer, garager, ekstra etage og orangerier. Gratis skitseforslag og byggetilladelse inkluderet – ring +27 85 13 81.',
+    ogTitle: 'Tilbygninger Slagelse – Lokale eksperter i udvidelse af boligen',
+    ogDescription: 'Professionelle tilbygninger i Slagelse: fra idé og byggetilladelse til nøglefærdig udvidelse. Kontakt +27 85 13 81 for uforpligtende rådgivning.'
     }
   };
 
@@ -124,7 +124,7 @@ const ServiceDetail = () => {
   useEffect(() => {
     if (service) {
       // Dynamic <title>
-      document.title = service.seoTitle ?? `${service.title} Silkeborg | Murer Silkeborg`;
+      document.title = service.seoTitle ?? `${service.title} Slagelse | Murer Slagelse`;
 
       // Meta Description
       const metaDesc = document.querySelector("meta[name='description']");
@@ -307,7 +307,7 @@ const ServiceDetail = () => {
                       <a href={`tel:${PHONE_LINK}`}>Ring {PHONE_DISPLAY}</a>
                     </Button>
                     <Button asChild variant="outline" className="w-full">
-                      <a href="mailto:info@murersilkeborg.dk">Send email</a>
+                      <a href="mailto:infomurerslagelse@gmail.com">Send email</a>
                     </Button>
                   </div>
                 </CardContent>

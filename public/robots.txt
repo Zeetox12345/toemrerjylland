@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /politik
 
-Sitemap: https://murersilkeborg.dk/sitemap.xml
+Sitemap: https://murerslagelse.dk/sitemap.xml

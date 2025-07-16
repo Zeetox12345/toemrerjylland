@@ -15,7 +15,7 @@ const Politik = () => {
             <section>
               <h2 className="font-montserrat font-semibold text-2xl mb-4">Privatlivspolitik</h2>
               <p className="text-gray-700 mb-4">
-                Hos <strong>Murer&nbsp;Silkeborg</strong> værner vi om dit privatliv. Når du
+                Hos <strong>Murer&nbsp;Slagelse</strong> værner vi om dit privatliv. Når du
                 besøger vores hjemmeside eller kontakter os, behandler vi kun de
                 personoplysninger, der er nødvendige for at kunne svare på din
                 henvendelse og levere vores services. De typiske oplysninger er
@@ -74,8 +74,8 @@ const Politik = () => {
                 kan du kontakte os på:
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <p><strong>Murer Silkeborg</strong></p>
-                <p>E-mail: info@murersilkeborg.dk</p>
+                      <p><strong>Murer Slagelse</strong></p>
+      <p>E-mail: infomurerslagelse@gmail.com</p>
                 <p>Telefon: {PHONE_DISPLAY}</p>
               </div>
             </section>
