@@ -22,7 +22,7 @@ const Kontakt = () => {
           {/* Contact Info */}
           <div className="flex flex-col justify-center space-y-6">
             <p className="text-lg text-gray-700">
-              Har du spørgsmål eller ønsker du et tilbud på dit projekt? Du er altid velkommen til at kontakte os direkte.
+              Har du spørgsmål eller ønsker du et tilbud på dit ? Du er altid velkommen til at kontakte os direkte.
             </p>
             <Button 
               asChild
