@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Phone, CheckCircle, Clock, Euro } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import TagarbejdeContent from "@/components/TagarbejdeContent";
 import TilbygningContent from "@/components/TilbygningContent";
 import RenoveringContent from "@/components/RenoveringContent";
 import TerrasseContent from "@/components/TerrasseContent";
+import SEOHead from "@/components/SEOHead";
 
 interface ServiceData {
   title: string;
@@ -120,36 +121,43 @@ const ServiceDetail = () => {
 
   const service = services[slug as keyof typeof services];
 
-  // Update meta tags
-  useEffect(() => {
-    if (service) {
-      // Dynamic <title>
-      document.title = service.seoTitle ?? `${service.title} Jylland | Tømrer Jylland`;
 
-      // Meta Description
-      const metaDesc = document.querySelector("meta[name='description']");
-      if (metaDesc) {
-        metaDesc.setAttribute('content', service.seoDescription ?? service.description);
-      }
-
-      // Open Graph tags
-      const ogTitle = document.querySelector("meta[property='og:title']");
-      if (ogTitle) {
-        ogTitle.setAttribute('content', service.ogTitle ?? document.title);
-      }
-      const ogDesc = document.querySelector("meta[property='og:description']");
-      if (ogDesc) {
-        ogDesc.setAttribute('content', service.ogDescription ?? service.seoDescription ?? service.description);
-      }
-    }
-  }, [service]);
 
   if (!service) {
     return <div>Service ikke fundet</div>;
   }
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.description,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Tømrer Jylland",
+      "telephone": "+45278513881",
+      "email": "infotoemrerjylland@gmail.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Jylland, Denmark"
+    },
+    "serviceType": service.title,
+    "image": `https://toemrerjylland.dk${service.heroImage}`
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead
+        title={service.seoTitle ?? `${service.title} Jylland | Tømrer Jylland`}
+        description={service.seoDescription ?? service.description}
+        ogTitle={service.ogTitle}
+        ogDescription={service.ogDescription ?? service.seoDescription}
+        ogImage={`https://toemrerjylland.dk${service.heroImage}`}
+        canonicalUrl={`https://toemrerjylland.dk/services/${slug}`}
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
       {/* Breadcrumb */}
       <nav className="bg-gray-50 py-4">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -316,7 +324,8 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

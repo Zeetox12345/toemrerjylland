@@ -7,8 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
+    "build:ssg": "vite build && node scripts/prerender.js && node scripts/generate-sitemap.js",
+    "prerender": "node scripts/prerender.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:ssg": "vite preview --host"
   },
   "dependencies": {
     "@emailjs/browser": "^3.12.1",
@@ -52,6 +55,7 @@
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.53.0",
     "react-resizable-panels": "^2.1.3",
     "react-router-dom": "^6.26.2",

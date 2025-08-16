@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, CheckCircle, Clock, Users, Award, Star, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,17 +8,79 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import QuoteForm from '@/components/QuoteForm';
 import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 import SEOContent, { faqItems } from "@/components/SEOContent";
+import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
-  useEffect(() => {
-    document.title = "Tømrer Jylland | Lokalt tømrerteam – Tag, Tilbygninger & Renoveringer";
-    const metaDesc = document.querySelector("meta[name='description']");
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Skal du bruge en erfaren tømrer i Jylland? Vi leverer alt fra tagarbejde til tilbygninger og renoveringer. Få et GRATIS og uforpligtende tilbud – ring +45 23 45 67 89 i dag!');
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Tømrer Jylland",
+    "description": "Professionelt tømrerarbejde i Jylland - tagarbejde, tilbygninger og renoveringer",
+    "url": "https://toemrerjylland.dk",
+    "telephone": "+45278513881",
+    "email": "infotoemrerjylland@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Jylland",
+      "addressCountry": "DK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "56.1568",
+      "longitude": "9.8548"
+    },
+    "openingHours": "Mo-Fr 07:00-17:00",
+    "priceRange": "$$",
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "56.1568",
+        "longitude": "9.8548"
+      },
+      "geoRadius": "100000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Tømrer Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tagarbejde",
+            "description": "Professionelt tagarbejde med fokus på kvalitet og vejrbestandighed"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tilbygninger",
+            "description": "Komplette tilbygninger fra idé til nøglefærdig løsning"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Renoveringer",
+            "description": "Totalrenoveringer af køkken, bad og hele boliger"
+          }
+        }
+      ]
     }
-  }, []);
+  };
+
   return (
     <>
+      <SEOHead
+        title="Tømrer Jylland | Lokalt tømrerteam – Tag, Tilbygninger & Renoveringer"
+        description="Skal du bruge en erfaren tømrer i Jylland? Vi leverer alt fra tagarbejde til tilbygninger og renoveringer. Få et GRATIS og uforpligtende tilbud – ring +45 27 85 13 81 i dag!"
+        keywords="tømrer jylland, tømrer silkeborg, tagarbejde, tilbygninger, renoveringer, træterrasser, håndværker jylland"
+        canonicalUrl="https://toemrerjylland.dk"
+        structuredData={structuredData}
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-charcoal via-charcoal/95 to-charcoal/90 text-white">
         <div 
