@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /politik
 
-Sitemap: https://murerslagelse.dk/sitemap.xml
+Sitemap: https://toemrerjylland.dk/sitemap.xml

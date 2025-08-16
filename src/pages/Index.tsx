@@ -11,10 +11,10 @@ import SEOContent, { faqItems } from "@/components/SEOContent";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Murer Slagelse | Lokalt murermesterteam – Facader, Badeværelser & Flisearbejde";
+    document.title = "Tømrer Jylland | Lokalt tømrerteam – Tag, Tilbygninger & Renoveringer";
     const metaDesc = document.querySelector("meta[name='description']");
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Skal du bruge en erfaren murer i Slagelse? Vi leverer alt fra facaderenovering til flisearbejde. Få et GRATIS og uforpligtende tilbud – ring +27 85 13 81 i dag!');
+      metaDesc.setAttribute('content', 'Skal du bruge en erfaren tømrer i Jylland? Vi leverer alt fra tagarbejde til tilbygninger og renoveringer. Få et GRATIS og uforpligtende tilbud – ring +45 23 45 67 89 i dag!');
     }
   }, []);
   return (
@@ -33,10 +33,10 @@ const Index = () => {
             <div className="lg:col-span-2">
               <div className="animate-fade-in-up">
                 <h1 className="font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
-                  Murer Slagelse – Dit lokale, professionelle murermesterteam
+                  Tømrer Jylland – Dit lokale, professionelle tømrerteam
                 </h1>
                 <h2 className="text-xl md:text-2xl mb-8 text-gray-200 font-medium max-w-3xl">
-                  Drømmer du om et nyt badeværelse, en solid tilbygning eller en facaderenovering, der holder i årtier? Hos Murer Slagelse får du specialiseret murerarbejde udført efter de højeste faglige standarder. Vi kombinerer traditionelle teknikker med moderne løsninger – og vi står klar til at forvandle dine byggedrømme til virkelighed.
+                  Drømmer du om et nyt tag, en solid tilbygning eller en totalrenovering af dit hjem? Hos Tømrer Jylland får du specialiseret tømrerarbejde udført efter de højeste faglige standarder. Vi kombinerer traditionelt håndværk med moderne byggetekniker – og vi står klar til at forvandle dine byggedrømme til virkelighed.
                 </h2>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Button 
@@ -87,9 +87,9 @@ const Index = () => {
       {/* Intro Copy Section */}
       <section className="py-12 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-6 text-gray-700">
-                      <h2 className="font-montserrat font-bold text-2xl text-charcoal">Hvorfor vælge en lokal murer i Slagelse?</h2>
+                      <h2 className="font-montserrat font-bold text-2xl text-charcoal">Hvorfor vælge en lokal tømrer i Jylland?</h2>
           <p>
-                          Slagelses særlige klimaforhold stiller krav til alt fra fugtsikring til materialevalg. Som lokal murermester kender vi de gældende byggestandarder, myndighedskrav og de typiske murstenstyper i området. Det betyder mere holdbare løsninger, færre overraskelser og kort responstid, når du kontakter os på {PHONE_DISPLAY}.
+                          Jyllands varierende klimaforhold stiller krav til alt fra tagkonstruktioner til trævalg og fugtbehandling. Som lokalt tømrerteam kender vi de gældende byggestandarder, myndighedskrav og de bedste materialer til det jyske klima. Det betyder mere holdbare løsninger, færre overraskelser og kort responstid, når du kontakter os på {PHONE_DISPLAY}.
           </p>
 
           <h2 className="font-montserrat font-bold text-2xl text-charcoal">Vores kerneydelser</h2>
@@ -104,24 +104,24 @@ const Index = () => {
               </thead>
               <tbody>
                 <tr className="border-t">
-                  <td className="px-4 py-2 font-medium">Facaderenovering</td>
-                  <td className="px-4 py-2">Vandskuring, omfugning, netpuds</td>
-                  <td className="px-4 py-2">Forlænger levetiden, reducerer varmetab</td>
-                </tr>
-                <tr className="border-t">
-                  <td className="px-4 py-2 font-medium">Badeværelses­renovering</td>
-                  <td className="px-4 py-2">Nyt vådrum, fliseopsætning, gulvvarme</td>
-                  <td className="px-4 py-2">Øger boligværdien, bedre fugtsikring</td>
+                  <td className="px-4 py-2 font-medium">Tagarbejde</td>
+                  <td className="px-4 py-2">Nyt tag, reparationer, tagrender</td>
+                  <td className="px-4 py-2">Beskytter dit hjem, øger værdi</td>
                 </tr>
                 <tr className="border-t">
                   <td className="px-4 py-2 font-medium">Tilbygninger & Nybyg</td>
-                  <td className="px-4 py-2">Garage, udestue, ekstra etage</td>
-                  <td className="px-4 py-2">Skræddersyede løsninger, byggestyring</td>
+                  <td className="px-4 py-2">Garage, orangeri, ekstra værelser</td>
+                  <td className="px-4 py-2">Øger boligværdien, mere plads</td>
                 </tr>
                 <tr className="border-t">
-                                      <td className="px-4 py-2 font-medium">Flisearbejde Slagelse</td>
-                  <td className="px-4 py-2">Køkken­fliser, klinker, natursten</td>
-                  <td className="px-4 py-2">Millimeterpræcision, slidstærke fuger</td>
+                  <td className="px-4 py-2 font-medium">Renoveringer</td>
+                  <td className="px-4 py-2">Køkken, bad, lofter, gulve</td>
+                  <td className="px-4 py-2">Moderniserer hjemmet, energibesparelse</td>
+                </tr>
+                <tr className="border-t">
+                                      <td className="px-4 py-2 font-medium">Terrasser & Altaner</td>
+                  <td className="px-4 py-2">Træterrasser, altaner, pergola</td>
+                  <td className="px-4 py-2">Udvidder boligområdet, øger livskvalitet</td>
                 </tr>
               </tbody>
             </table>
@@ -137,36 +137,36 @@ const Index = () => {
               Vores Specialer
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi tilbyder professionelle murerløsninger til både private og erhvervskunder i Slagelse og omegn.
+              Vi tilbyder professionelle tømrerløsninger til både private og erhvervskunder i hele Jylland.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Facaderenovering',
-                description: 'Professionel renovering af facader med fokus på kvalitet og holdbarhed.',
+                title: 'Tagarbejde',
+                description: 'Professionelt tagarbejde med fokus på kvalitet og vejrbestandighed.',
+                image: '/mason-2376322.jpg',
+                link: '/services/tagarbejde'
+              },
+              {
+                title: 'Tilbygninger',
+                description: 'Komplette tilbygninger fra idé til nøglefærdig løsning.',
+                image: '/tilbygninger.jpg',
+                link: '/services/tilbygninger'
+              },
+              {
+                title: 'Renoveringer',
+                description: 'Totalrenoveringer af køkken, bad og hele boliger.',
                 image: '/facaderenovering.jpg',
-                link: '/services/facaderenovering'
-              },
-              {
-                title: 'Badeværelsesrenovering',
-                description: 'Komplette badeværelsesrenovering og professionelt flisearbejde.',
-                image: '/badevaerelserenovering.jpg',
-                link: '/services/badevaerelsesrenovering'
-              },
-              {
-                title: 'Flisearbejde',
-                description: 'Eksperter i fliser & klinker – skarpe linjer og holdbare fuger.',
-                image: '/flisearbejde.jpg',
-                link: '/services/flisearbejde'
+                link: '/services/renoveringer'
               }
             ].map((service, index) => (
               <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300 group">
                 <div className="relative overflow-hidden">
                   <img 
                     src={service.image} 
-                    alt={`${service.title} - Murer Slagelse`}
+                    alt={`${service.title} - Tømrer Jylland`}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -235,12 +235,12 @@ const Index = () => {
               <div className="text-sm text-gray-600">Medlem</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-terracotta">10+</div>
+              <div className="text-2xl font-bold text-terracotta">15+</div>
               <div className="text-sm text-gray-600">Års erfaring</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-terracotta">Autoriseret</div>
-              <div className="text-sm text-gray-600">Murermester</div>
+              <div className="text-2xl font-bold text-terracotta">Uddannet</div>
+              <div className="text-sm text-gray-600">Tømrer</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-terracotta">Forsikret</div>
@@ -258,22 +258,22 @@ const Index = () => {
             {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Murer Slagelse",
-            "description": "Professionel murermester i Slagelse med speciale i facaderenovering, badeværelser og flisearbejde",
+            "name": "Tømrer Jylland",
+            "description": "Professionel tømrer i Jylland med speciale i tagarbejde, tilbygninger og renoveringer",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "Murer Slagelse",
+              "name": "Tømrer Jylland",
                 "telephone": PHONE_LINK,
-                              "email": "infomurerslagelse@gmail.com",
+                              "email": "infotoemrerjylland@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Slagelse",
-                                  "addressRegion": "Sjælland",
+                "addressLocality": "Aarhus",
+                                  "addressRegion": "Jylland",
                 "addressCountry": "DK"
               }
             },
-            "areaServed": "Slagelse",
-            "serviceType": "Murermester"
+            "areaServed": "Jylland",
+            "serviceType": "Tømrer"
             },
             {
               "@context": "https://schema.org",

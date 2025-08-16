@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Hammer, Home, Wrench } from 'lucide-react';
+import { ChevronRight, Hammer, Home, Wrench, Building } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
@@ -9,32 +9,32 @@ import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
 const Services = () => {
   const services = [
     {
-      title: 'Facaderenovering',
-      description: 'Professionel renovering af facader, murstensskifte og fugtproblemer.',
-      icon: Home,
-      slug: 'facaderenovering',
-      features: ['Murstensskifte', 'Fugeskrabning', 'Fugtproblemer', 'Isolering']
-    },
-    {
-      title: 'Badeværelsesrenovering',
-      description: 'Komplette badeværelsesrenovering og flisearbejde i høj kvalitet.',
-      icon: Wrench,
-      slug: 'badevaerelsesrenovering',
-      features: ['Flisearbejde', 'Membran', 'VVS-samarbejde', 'Design-rådgivning']
-    },
-    {
-      title: 'Flisearbejde',
-      description: 'Eksperter i fliser og klinker til køkken, bad og terrasse.',
-      icon: Wrench,
-      slug: 'flisearbejde',
-      features: ['Klinker', 'Natursten', 'Køkkenfliser', 'Udendørsbelægning']
+      title: 'Tagarbejde',
+      description: 'Professionelt tagarbejde med højeste kvalitet og holdbarhed.',
+      icon: Building,
+      slug: 'tagarbejde',
+      features: ['Nyt tag', 'Tagreparationer', 'Tagrender', 'Isolering']
     },
     {
       title: 'Tilbygninger',
-      description: 'Murværk til tilbygninger, carporte og andre byggeprojekter.',
-      icon: Hammer,
+      description: 'Komplette tilbygninger fra fundament til færdig løsning.',
+      icon: Home,
       slug: 'tilbygninger',
-      features: ['Fundamenter', 'Murværk', 'Carporte', 'Terrasser']
+      features: ['Garage', 'Orangeri', 'Udestue', 'Ekstra værelser']
+    },
+    {
+      title: 'Renoveringer',
+      description: 'Totalrenoveringer af køkken, bad og hele boliger.',
+      icon: Hammer,
+      slug: 'renoveringer',
+      features: ['Køkkenrenovering', 'Badrenovering', 'Loftsisolering', 'Gulvlægning']
+    },
+    {
+      title: 'Terrasser & Altaner',
+      description: 'Træterrasser, altaner og pergola i højeste kvalitet.',
+      icon: Wrench,
+      slug: 'terrasser',
+      features: ['Træterrasser', 'Altaner', 'Pergola', 'Hegn']
     }
   ];
 
@@ -48,8 +48,8 @@ const Services = () => {
               Vores Services
             </h1>
             <p className="text-xl text-gray-200 mb-8">
-              Vi tilbyder professionelle murerløsninger til både private og erhvervskunder 
-              i Slagelse og omegn. Se vores specialer nedenfor.
+              Vi tilbyder professionelle tømrerløsninger til både private og erhvervskunder 
+              i hele Jylland. Se vores specialer nedenfor.
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ const Services = () => {
             Ikke sikker på hvilken service du har brug for?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Ring til os på {PHONE_DISPLAY}, så hjælper vi dig med at finde den rigtige løsning til dit projekt.
+            Ring til os på {PHONE_DISPLAY}, så hjælper vi dig med at finde den rigtige tømrerløsning til dit projekt.
           </p>
           <Button asChild size="lg" className="bg-terracotta hover:bg-terracotta/90">
             <a href={`tel:${PHONE_LINK}`}>Ring nu for rådgivning</a>

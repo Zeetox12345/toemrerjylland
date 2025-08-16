@@ -11,6 +11,7 @@ const Header = () => {
   const navigation = [
     { name: 'Forside', href: '/' },
     { name: 'Services', href: '/services' },
+    { name: 'Tømrer Silkeborg', href: '/toemrer-silkeborg' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
 
@@ -21,8 +22,8 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="/murerslagelselogo.PNG"
-              alt="Murer Slagelse Logo"
+              src="/tømrerjylland_logo-removebg-preview.png"
+              alt="Tømrer Jylland Logo"
               className="h-16 w-auto object-contain"
             />
           </Link>

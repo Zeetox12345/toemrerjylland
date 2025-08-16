@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
+import ToemmrerSilkeborg from "./pages/ToemmrerSilkeborg";
 import Kontakt from "./pages/Kontakt";
 import Politik from "./pages/Politik";
 import NotFound from "./pages/NotFound";
@@ -25,6 +26,7 @@ const App = () => (
             <Route index element={<Index />} />
             <Route path="services" element={<Services />} />
             <Route path="services/:slug" element={<ServiceDetail />} />
+            <Route path="toemrer-silkeborg" element={<ToemmrerSilkeborg />} />
             <Route path="kontakt" element={<Kontakt />} />
             <Route path="politik" element={<Politik />} />
           </Route>

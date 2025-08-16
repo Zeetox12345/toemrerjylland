@@ -19,10 +19,10 @@ const PROJECT_SIZE_LABELS: Record<string, string> = {
 };
 
 const WORK_TYPE_LABELS: Record<string, string> = {
-  facade: 'Facaderenovering',
-  bathroom: 'Badeværelse & Fliser',
-  extension: 'Tilbygninger',
-  repair: 'Reparationer'
+  roofwork: 'Tagarbejde',
+  extensions: 'Tilbygninger',
+  renovations: 'Renoveringer',
+  decks: 'Terrasser & Altaner'
 };
 
 interface QuoteFormProps {
@@ -174,20 +174,20 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
               className="mt-2"
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="facade" id="facade" />
-                <Label htmlFor="facade" className="text-sm">Facaderenovering</Label>
+                <RadioGroupItem value="roofwork" id="roofwork" />
+                <Label htmlFor="roofwork" className="text-sm">Tagarbejde</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="bathroom" id="bathroom" />
-                <Label htmlFor="bathroom" className="text-sm">Badeværelse & Fliser</Label>
+                <RadioGroupItem value="extensions" id="extensions" />
+                <Label htmlFor="extensions" className="text-sm">Tilbygninger</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="extension" id="extension" />
-                <Label htmlFor="extension" className="text-sm">Tilbygninger</Label>
+                <RadioGroupItem value="renovations" id="renovations" />
+                <Label htmlFor="renovations" className="text-sm">Renoveringer</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="repair" id="repair" />
-                <Label htmlFor="repair" className="text-sm">Reparationer</Label>
+                <RadioGroupItem value="decks" id="decks" />
+                <Label htmlFor="decks" className="text-sm">Terrasser & Altaner</Label>
               </div>
             </RadioGroup>
             {/* Hidden felt med pæn label til EmailJS */}

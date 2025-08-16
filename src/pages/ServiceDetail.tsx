@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import QuoteForm from '@/components/QuoteForm';
 import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
-import FacadeRenovationContent from "@/components/FacadeRenovationContent";
-import BathroomRenovationContent from "@/components/BathroomRenovationContent";
-import TileWorkContent from "@/components/TileWorkContent";
-import ExtensionContent from "@/components/ExtensionContent";
+import TagarbejdeContent from "@/components/TagarbejdeContent";
+import TilbygningContent from "@/components/TilbygningContent";
+import RenoveringContent from "@/components/RenoveringContent";
+import TerrasseContent from "@/components/TerrasseContent";
 
 interface ServiceData {
   title: string;
@@ -28,93 +28,93 @@ const ServiceDetail = () => {
   const { slug } = useParams();
 
   const services: Record<string, ServiceData> = {
-    'facaderenovering': {
-      title: 'Facaderenovering',
-      description: 'Professionel renovering af facader med fokus på kvalitet og holdbarhed',
-      heroImage: '/facaderenovering.jpg',
+    'tagarbejde': {
+      title: 'Tagarbejde',
+      description: 'Professionelt tagarbejde med fokus på kvalitet og vejrbestandighed',
+      heroImage: '/mason-2376322.jpg',
       benefits: [
+        'Beskytter dit hjem mod vejret',
         'Øget værdi på din ejendom',
         'Bedre isolering og energibesparelse',
-        'Beskyttelse mod fugt og vejrlig',
-        'Moderne og flot udseende'
+        'Moderne og holdbart materiale'
       ],
       priceFactors: [
-        'Facadens størrelse og tilstand',
-        'Type af materialer',
-        'Kompleksitet af arbejdet',
-        'Stilladsbehov'
+        'Tagets størrelse og hældning',
+        'Type af tagmaterialer',
+        'Kompleksitet af tagkonstruktion',
+        'Stilladsbehov og adgangsforhold'
       ],
-      timeline: '2-6 uger afhængig af projekt størrelse',
-          seoTitle: 'Facaderenovering Slagelse | Vandskuring, Omfugning & Netpuds – Få tilbud',
-    seoDescription: 'Professionel facaderenovering i Slagelse: vandskuring, omfugning og netpuds. Forlæng levetiden på din facade og spar energi. Gratis besigtigelse – ring +27 85 13 81.',
-    ogTitle: 'Facaderenovering Slagelse | Eksperter i holdbar facade',
-    ogDescription: 'Få en flot, stærk facade. Vi tilbyder omfugning, vandskuring og netpuds i Slagelse. Ring +27 85 13 81 for gratis rådgivning.'
-    },
-    'badevaerelsesrenovering': {
-      title: 'Badeværelsesrenovering',
-      description: 'Komplette badeværelsesrenovering og professionelt flisearbejde',
-      heroImage: '/badevaerelserenovering.jpg',
-      benefits: [
-        'Vandtæt og holdbar løsning',
-        'Moderne design og funktionalitet',
-        'Øget komfort og værdi',
-        'Professionelt håndværk'
-      ],
-      priceFactors: [
-        'Badeværelsets størrelse',
-        'Valg af fliser og materialer',
-        'VVS-arbejde inkluderet',
-        'Kompleksitet af layout'
-      ],
-      timeline: '3-5 uger afhængig af størrelse',
-          seoTitle: 'Badeværelsesrenovering Slagelse | Total vådrumsløsning – Ring +27 85 13 81',
-    seoDescription: 'Drømmer du om et nyt badeværelse? Vi tilbyder komplet badeværelsesrenovering i Slagelse: design, VVS, el, fliser og gulvvarme. Få gratis 3D-tegning og fast pris – kontakt +27 85 13 81.',
-    ogTitle: 'Badeværelsesrenovering Slagelse – Eksperter i moderne vådrum',
-    ogDescription: 'Professionel badeværelsesrenovering i Slagelse med garanti. Alt fra nedrivning til sidste fuge. Ring +27 85 13 81 for gratis rådgivning.'
-    },
-    'flisearbejde': {
-      title: 'Flisearbejde',
-      description: 'Eksperter i fliser og klinker – millimeterpræcision og holdbare fuger',
-      heroImage: '/flisearbejde.jpg',
-      benefits: [
-        'Perfekt fugeafslutning',
-        'Skræddersyede mønstre',
-        'Holdbare materialer',
-        'Vandtæt membran'
-      ],
-      priceFactors: [
-        'Flisernes type og størrelse',
-        'Underlagets beskaffenhed',
-        'Rumstørrelse',
-        'Detaljegrad'
-      ],
-      timeline: '1-2 uger for standard badeværelse',
-          seoTitle: 'Flisearbejde Slagelse | Eksperter i fliser, klinker & natursten – Fast pris',
-    seoDescription: 'Perfekt flisearbejde i Slagelse til badeværelse, køkken eller terrasse. Millimeterpræcision, slidstærke fuger og garanti. Få gratis rådgivning – ring +27 85 13 81.',
-    ogTitle: 'Flisearbejde Slagelse – Professionel fliselægning med garanti',
-    ogDescription: 'Vi leverer flisearbejde i Slagelse med fokus på kvalitet og holdbarhed. Indendørs og udendørs fliser, natursten og mosaik. Kontakt +27 85 13 81 for et gratis tilbud.'
+      timeline: '3-10 dage afhængig af projekt størrelse',
+      seoTitle: 'Tagarbejde Jylland | Nyt tag, reparationer & tagrender – Få tilbud',
+      seoDescription: 'Professionelt tagarbejde i Jylland: nyt tag, reparationer og tagrender. Beskyt dit hjem med kvalitet fra erfarne tømrere. Gratis besigtigelse – ring +45 23 45 67 89.',
+      ogTitle: 'Tagarbejde Jylland | Eksperter i holdbare tagløsninger',
+      ogDescription: 'Få et stærkt, vejrbestandigt tag. Vi tilbyder tagarbejde i hele Jylland. Ring +45 23 45 67 89 for gratis rådgivning.'
     },
     'tilbygninger': {
       title: 'Tilbygninger',
-      description: 'Murværk til tilbygninger, carporte og andre byggeprojekter',
+      description: 'Komplette tilbygninger fra idé til nøglefærdig løsning',
       heroImage: '/tilbygninger.jpg',
       benefits: [
-        'Ekstra plads til familien',
-        'Professionelt fundament',
-        'Kvalitetsmurværk',
-        'Øget boligværdi'
+        'Mere plads til familien',
+        'Øget boligværdi betydeligt',
+        'Skræddersyet til dine behov',
+        'Professionel projektstyring'
       ],
       priceFactors: [
         'Størrelse af tilbygning',
-        'Fundamentsarbejde',
-        'Materialevalg',
-        'Terrænforhold'
+        'Fundamentsarbejde og terræn',
+        'Materialevalg og finish',
+        'Kompleksitet af konstruktion'
       ],
       timeline: '3-8 uger afhængig af størrelse',
-          seoTitle: 'Tilbygninger Slagelse | Garage, Overetage & Orangeri – Få fast pris',
-    seoDescription: 'Skal du bygge til? Vi designer og opfører tilbygninger i Slagelse: udestuer, garager, ekstra etage og orangerier. Gratis skitseforslag og byggetilladelse inkluderet – ring +27 85 13 81.',
-    ogTitle: 'Tilbygninger Slagelse – Lokale eksperter i udvidelse af boligen',
-    ogDescription: 'Professionelle tilbygninger i Slagelse: fra idé og byggetilladelse til nøglefærdig udvidelse. Kontakt +27 85 13 81 for uforpligtende rådgivning.'
+      seoTitle: 'Tilbygninger Jylland | Garage, Orangeri & Udestue – Fast pris',
+      seoDescription: 'Drømmer du om mere plads? Vi designer og opfører tilbygninger i Jylland: garage, orangeri, udestue og ekstra værelser. Gratis skitseforslag – ring +45 23 45 67 89.',
+      ogTitle: 'Tilbygninger Jylland – Eksperter i udvidelse af hjemmet',
+      ogDescription: 'Professionelle tilbygninger i Jylland: fra idé til nøglefærdig løsning. Kontakt +45 23 45 67 89 for gratis rådgivning.'
+    },
+    'renoveringer': {
+      title: 'Renoveringer',
+      description: 'Totalrenoveringer af køkken, bad og hele boliger',
+      heroImage: '/facaderenovering.jpg',
+      benefits: [
+        'Moderne og funktionelt design',
+        'Energioptimering og besparelser',
+        'Øget komfort og livskvalitet',
+        'Betydelig værditilvækst'
+      ],
+      priceFactors: [
+        'Omfang af renovering',
+        'Kvalitet af materialer',
+        'Kompleksitet af installationer',
+        'Bevaringsværdige elementer'
+      ],
+      timeline: '2-8 uger afhængig af omfang',
+      seoTitle: 'Renoveringer Jylland | Køkken, bad & totalrenovering – Få tilbud',
+      seoDescription: 'Totalrenovering i Jylland: køkken, badeværelse og hele boliger. Moderne design og energioptimering. Gratis rådgivning – ring +45 23 45 67 89.',
+      ogTitle: 'Renoveringer Jylland – Forvandl dit hjem',
+      ogDescription: 'Professionelle renoveringer i Jylland med fokus på kvalitet og design. Kontakt +45 23 45 67 89 for gratis konsultation.'
+    },
+    'terrasser': {
+      title: 'Terrasser & Altaner',
+      description: 'Træterrasser, altaner og pergola i højeste kvalitet',
+      heroImage: '/terrasser.jpg',
+      benefits: [
+        'Udvidet udendørs opholdsområde',
+        'Øget boligværdi og attraktivitet',
+        'Holdbare og vejrbestandige materialer',
+        'Skræddersyet design til din have'
+      ],
+      priceFactors: [
+        'Størrelse og design af terrasse',
+        'Valg af trætype og behandling',
+        'Fundamentering og terræn',
+        'Ekstrafunktioner som gelænder og trin'
+      ],
+      timeline: '2-5 dage afhængig af størrelse',
+      seoTitle: 'Træterrasser Jylland | Altaner & Pergola – Få fast pris',
+      seoDescription: 'Smukke træterrasser og altaner i Jylland. Kvalitetstræ og fagmandsmæssig udførelse. Gratis opmåling og tilbud – ring +45 23 45 67 89.',
+      ogTitle: 'Træterrasser Jylland – Skab dit drømme-uderum',
+      ogDescription: 'Professionelle træterrasser og altaner i Jylland. Holdbare materialer og smukt håndværk. Kontakt +45 23 45 67 89 for tilbud.'
     }
   };
 
@@ -124,7 +124,7 @@ const ServiceDetail = () => {
   useEffect(() => {
     if (service) {
       // Dynamic <title>
-      document.title = service.seoTitle ?? `${service.title} Slagelse | Murer Slagelse`;
+      document.title = service.seoTitle ?? `${service.title} Jylland | Tømrer Jylland`;
 
       // Meta Description
       const metaDesc = document.querySelector("meta[name='description']");
@@ -261,27 +261,27 @@ const ServiceDetail = () => {
               </div>
 
               {/* SEO Rich Content */}
-              {slug === 'facaderenovering' && (
+              {slug === 'tagarbejde' && (
                 <div className="space-y-12">
-                  <FacadeRenovationContent />
-                </div>
-              )}
-
-              {slug === 'badevaerelsesrenovering' && (
-                <div className="space-y-12">
-                  <BathroomRenovationContent />
-                </div>
-              )}
-
-              {slug === 'flisearbejde' && (
-                <div className="space-y-12">
-                  <TileWorkContent />
+                  <TagarbejdeContent />
                 </div>
               )}
 
               {slug === 'tilbygninger' && (
                 <div className="space-y-12">
-                  <ExtensionContent />
+                  <TilbygningContent />
+                </div>
+              )}
+
+              {slug === 'renoveringer' && (
+                <div className="space-y-12">
+                  <RenoveringContent />
+                </div>
+              )}
+
+              {slug === 'terrasser' && (
+                <div className="space-y-12">
+                  <TerrasseContent />
                 </div>
               )}
             </div>
@@ -307,7 +307,7 @@ const ServiceDetail = () => {
                       <a href={`tel:${PHONE_LINK}`}>Ring {PHONE_DISPLAY}</a>
                     </Button>
                     <Button asChild variant="outline" className="w-full">
-                      <a href="mailto:infomurerslagelse@gmail.com">Send email</a>
+                      <a href="mailto:infotoemrerjylland@gmail.com">Send email</a>
                     </Button>
                   </div>
                 </CardContent>
