@@ -288,7 +288,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
             ) : (
               <>
                 <Send className="w-4 h-4 mr-2" />
-                Få et uforpligtende tilbud »
+                Send besked
               </>
             )}
           </Button>
@@ -303,7 +303,7 @@ const QuoteForm = ({ className = '', title = 'Få et uforpligtende tilbud nu' }:
         form={formId}
         className="fixed bottom-4 left-1/2 -translate-x-1/2 max-w-sm w-[90%] bg-terracotta hover:bg-terracotta/90 text-white font-semibold shadow-xl md:hidden z-50"
       >
-        Få et uforpligtende tilbud »
+        Send besked
       </Button>
     )}
     </>

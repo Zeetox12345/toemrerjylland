@@ -66,7 +66,7 @@ const ToemmrerSilkeborg = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: "url('/silkeborg-scene.jpg')"
+            backgroundImage: "url('/mason-2376322.jpg')"
           }}
           aria-hidden="true"
         />
@@ -132,7 +132,9 @@ const ToemmrerSilkeborg = () => {
 
       {/* Local Intro Section */}
       <section className="py-12 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-6 text-gray-700">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="max-w-4xl space-y-6 text-gray-700">
           <h2 className="font-montserrat font-bold text-2xl text-charcoal">Hvorfor vælge lokalt tømrerteam i Silkeborg?</h2>
           <p>
             Silkeborgs placering ved søerne stiller særlige krav til byggeri - fra fugtbehandling til materialevalg. Som lokalt tømrerteam kender vi udfordringerne med søklima, kommunens byggebestemmelser i områder som Papirfabrikken og Laven, samt de karakteristiske trætyper der holder bedst i Midtjyllands vejrforhold.
@@ -145,6 +147,17 @@ const ToemmrerSilkeborg = () => {
             <li><strong>Leverandørnetværk:</strong> Tætte relationer til træhandlere i området</li>
             <li><strong>Referencer:</strong> Mange tilfredse kunder i Silkeborg og omegn</li>
           </ul>
+            </div>
+            
+            {/* Mason image */}
+            <div className="lg:order-first">
+              <img
+                src="/mason-2376322.jpg"
+                alt="Professionel tømrer i arbejde - Tømrer Silkeborg"
+                className="rounded-lg shadow-lg w-full h-64 lg:h-80 object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
