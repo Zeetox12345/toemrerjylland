@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/constants";
+import CityDropdown from './CityDropdown';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,6 @@ const Header = () => {
   const navigation = [
     { name: 'Forside', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Tømrer Silkeborg', href: '/toemrer-silkeborg' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
 
@@ -39,8 +39,9 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Button 
-              asChild 
+            <CityDropdown />
+            <Button
+              asChild
               className="bg-terracotta hover:bg-terracotta/90 text-white"
             >
               <a href={`tel:${PHONE_LINK}`} className="inline-flex items-center space-x-2">
@@ -73,15 +74,16 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="text-charcoal hover:text-terracotta transition-colors duration-200 font-medium py-3 text-lg border-b border-gray-100 last:border-b-0"
+                    className="text-charcoal hover:text-terracotta transition-colors duration-200 font-medium py-3 text-lg border-b border-gray-100"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
+                <CityDropdown isMobile={true} onMobileClose={() => setIsMenuOpen(false)} />
                 <div className="pt-4">
-                  <Button 
-                    asChild 
+                  <Button
+                    asChild
                     className="bg-terracotta hover:bg-terracotta/90 text-white w-full"
                     size="lg"
                   >
